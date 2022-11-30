@@ -1,31 +1,28 @@
 /*
-  Loop Challenge
+  Function - Random Argument Challenge
+  ====================================
+  Create Function showDetails
+  Function Accept 3 Parameters [a, b, c]
+  Data Types For Info Is
+  - String => Name
+  - Number => Age
+  - Boolean => Status
+  Argument Is Random
+  Data Is Not Sorted Output Depend On Data Types
+  - Use Ternary Conditional Operator
 */
-
-let myAdmins = ["Ahmed", "Osama", "Sayed", "Stop", "Samera"];
-let myEmployees = ["Amgad", "Samah", "Ameer", "Omar", "Othman", "Amany", "Samia", "Anwar"];
-let admin_num=5
-document.write(`<div>We Have X Admins</div>`);
-document.write(`<div>We Have ${admin_num} Admins</div>`);
-document.write(`<hr>`);
-let index
-for(let i=0;i < admin_num;i++){
-  if (myAdmins[i]=="Stop"){
-    break;
-  }
-  document.write(`<div>`);
-  document.write(`The Admin For Team ${i+1} is ${myAdmins[i]}`);
-  document.write(`<h3>Team Member:</h3>`);
-  index=0
-  for(let j=0;j< myEmployees.length;j++){
-    console.log(myAdmins[i][0])
-    if (myEmployees[j][0]===myAdmins[i][0]){
-      document.write(`<p>${++index}-${myEmployees[j]}</p>`)
-    }
-
-  }
-  document.write(`<hr>`);
+function showDetails(...args){
+    let fname,age,status;
+    fname=(typeof args[0]==="string")?args[0]:(typeof args[1]==="string")?args[1]:args[2];
+    age=(typeof args[0]==="number")?args[0]:(typeof args[1]==="number")?args[1]:args[2];
+    status=(typeof args[0]==="boolean")?args[0]:(typeof args[1]==="boolean")?args[1]:args[2];
+    console.log(`Hellow ${fname}, Your Age Is ${age}, You Are ${(status===true)?"":"Not"} Available For Hire`);
+    
+    
    
-  document.write(`</div>`)
-
 }
+
+showDetails("Osama", 38, true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(38, "Osama", true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(true, 38, "Osama"); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(false, "Osama", 38); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
